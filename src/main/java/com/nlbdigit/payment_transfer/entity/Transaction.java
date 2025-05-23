@@ -18,7 +18,6 @@ public class Transaction {
 
     @Id
     @JdbcTypeCode(Types.VARCHAR)
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
     private String fromAccount;

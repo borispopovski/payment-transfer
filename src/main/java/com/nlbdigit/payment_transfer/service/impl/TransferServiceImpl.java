@@ -46,6 +46,8 @@ public class TransferServiceImpl implements TransferService {
         fromAccount.setBalance(fromAccount.getBalance().subtract(amount));
         toAccount.setBalance(toAccount.getBalance().add(amount));
 
+        accountRepository.save(fromAccount);
+        accountRepository.save(toAccount);
         transactionRepository.save(transferMapper.toTransaction(UUID.randomUUID(), fromId, toId, amount, LocalDateTime.now()));
     }
 

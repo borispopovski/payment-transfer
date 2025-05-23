@@ -17,7 +17,6 @@ public class Account {
 
     @Id
     @JdbcTypeCode(Types.VARCHAR)
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
     private BigDecimal balance;
