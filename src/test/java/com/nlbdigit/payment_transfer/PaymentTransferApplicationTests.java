@@ -3,6 +3,7 @@ package com.nlbdigit.payment_transfer;
 import com.nlbdigit.payment_transfer.entity.Account;
 import com.nlbdigit.payment_transfer.entity.Transaction;
 import com.nlbdigit.payment_transfer.mapper.TransferMapper;
+import com.nlbdigit.payment_transfer.model.AccountDto;
 import com.nlbdigit.payment_transfer.model.TransferDto;
 import com.nlbdigit.payment_transfer.repository.AccountRepository;
 import com.nlbdigit.payment_transfer.repository.TransactionRepository;
@@ -43,6 +44,7 @@ class PaymentTransferApplicationTests {
 	private TransferDto transferDto;
 	private UUID fromId;
 	private UUID toId;
+	private AccountDto accountDto;
 
 	@BeforeEach
 	void setUp() {
@@ -54,6 +56,7 @@ class PaymentTransferApplicationTests {
 
 		transaction = new Transaction();
 		transferDto = new TransferDto();
+		accountDto = new AccountDto();
 	}
 
 	@Test
@@ -118,6 +121,24 @@ class PaymentTransferApplicationTests {
 		assertThatThrownBy(() -> transferService.transfer(transferDto))
 				.isInstanceOf(IllegalArgumentException.class)
 				.hasMessageContaining("Source account not found");
+	}
+
+	@Test
+	void testAddAccountSuccessfully() {
+		// Arrange
+		BigDecimal balance = new BigDecimal("500.00");
+		accountDto.setBalance(balance);
+
+		UUID generatedId = UUID.randomUUID();
+		Account account = transferMapper.toAccount(generatedId, balance);
+
+		when(transferMapper.toAccount(any(UUID.class), eq(balance))).thenReturn(account);
+		when(accountRepository.save(account)).thenReturn(account);
+
+		transferService.add(accountDto);
+
+		verify(accountRepository, times(1)).save(account);
+		verify(transferMapper, times(1)).toAccount(any(UUID.class), eq(balance));
 	}
 
 }

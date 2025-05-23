@@ -7,6 +7,7 @@ A simple and secure fund transfer service built with **Spring Boot**, **Java 17*
 ## Features
 
 - Transfer funds between two accounts
+- Add account
 - Validates sufficient balance in the source account
 - Persists transaction records for auditing
 - Comprehensive error handling
