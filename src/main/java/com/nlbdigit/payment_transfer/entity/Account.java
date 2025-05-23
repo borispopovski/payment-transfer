@@ -5,8 +5,10 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.Data;
+import org.hibernate.annotations.JdbcTypeCode;
 
 import java.math.BigDecimal;
+import java.sql.Types;
 import java.util.UUID;
 
 @Data
@@ -14,6 +16,7 @@ import java.util.UUID;
 public class Account {
 
     @Id
+    @JdbcTypeCode(Types.VARCHAR)
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
