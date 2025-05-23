@@ -23,6 +23,24 @@ A simple and secure fund transfer service built with **Spring Boot**, **Java 17*
 - MariaDB
 - Maven
 
+### Endpoints
+
+- POST /api/account
+```json
+{
+  "balance" : 100
+}
+```
+
+- POST /api/transfer
+```json
+{
+  "fromAccountId": "uuid",
+  "toAccountId": "uuid",
+  "amount": 50
+}
+```
+
 ### Database Setup
 
 Create the database in MariaDB:
