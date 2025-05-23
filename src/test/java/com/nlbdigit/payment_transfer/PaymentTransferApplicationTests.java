@@ -125,7 +125,6 @@ class PaymentTransferApplicationTests {
 
 	@Test
 	void testAddAccountSuccessfully() {
-		// Arrange
 		BigDecimal balance = new BigDecimal("500.00");
 		accountDto.setBalance(balance);
 
