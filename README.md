@@ -27,6 +27,7 @@ A simple and secure fund transfer service built with **Spring Boot**, **Java 17*
 
 - It should create a database "bank_db". You can use a tool (ex. HeidiSQL) for creating. I set up url:localhost, port:3306, user:root and password:123. You should change params in application.yml or using these params. When you start API from (ex. IntelliJ), tables will create and API will start on "localhost:8080"
 - Better solution for creating a database is integrating Liquibase configuration and xml file in API, but I haven't used in this API. Should I do that?
+- Also, it can add docker file for creating DB and running API.
 
 ### Endpoints
 
